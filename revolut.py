@@ -97,7 +97,7 @@ class RevolutCsvReader:
             iban=iban,
             description=description,
             datetime=completed_datetime,
-            before_balance=balance - amount,
+            before_balance=balance - amount - fee,
             after_balance=balance - fee)
 
         batch = [transaction_without_fee]
