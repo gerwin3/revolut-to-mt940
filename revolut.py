@@ -27,7 +27,7 @@ DATETIME_FORMAT = DATE_FORMAT + TIME_FORMAT
 
 FEE_NAME = 'Revolut'
 FEE_IBAN = ''
-FEE_DESCRIPTION = 'Bank transaction fee'
+FEE_DESCRIPTION_FORMAT = 'Bank transaction fee {}'
 FEE_DATETIME_DELTA = timedelta(seconds=1)
 
 
@@ -118,7 +118,9 @@ class RevolutCsvReader:
             amount=fee,
             name=FEE_NAME,
             iban=FEE_IBAN,
-            description=FEE_DESCRIPTION,
+            # include timestamp of transaction to make sure that SnelStart
+            # does not detect similar transactions as the same one
+            description=FEE_DESCRIPTION_FORMAT.format(int(completed_datetime.timestamp())),
             datetime=completed_datetime + FEE_DATETIME_DELTA,
             before_balance=balance - fee,
             after_balance=balance)
