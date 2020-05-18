@@ -8,12 +8,12 @@ from datetime import datetime, timedelta
 from data import Transaction
 
 EXCPECT_HEADERS = [
-    'Date started', 'Time started', 'Date completed', 'Time completed',
-    'State', 'Type', 'Description', 'Reference', 'Payer', 'Card name',
-    'Card number', 'Orig currency', 'Orig amount', 'Payment currency',
-    'Amount', 'Fee', 'Balance', 'Account', 'Beneficiary account number',
-    'Beneficiary sort code or routing number', 'Beneficiary IBAN',
-    'Beneficiary BIC'
+    'Date started (UTC)', 'Time started (UTC)', 'Date completed (UTC)',
+    'Time completed (UTC)', 'State', 'Type', 'Description', 'Reference',
+    'Payer', 'Card name', 'Card number', 'Orig currency', 'Orig amount',
+    'Payment currency', 'Amount', 'Fee', 'Balance', 'Account',
+    'Beneficiary account number', 'Beneficiary sort code or routing number',
+    'Beneficiary IBAN', 'Beneficiary BIC'
 ]
 
 NAME_REMOVE_PREFIXES = [

@@ -29,8 +29,11 @@ def main():
     reader = RevolutCsvReader(args.input_file)
 
     with Mt940Writer(args.output_file, args.account_iban) as writer:
-        for transaction in reader.get_all_transactions():
+        transactions = reader.get_all_transactions()
+        for transaction in transactions:
             writer.write_transaction(transaction)
+
+        print('Wrote {} transactions to file: {}.'.format(len(transaction), args.output_file))
 
 
 if __name__ == "__main__":
