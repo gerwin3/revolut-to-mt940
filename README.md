@@ -16,6 +16,7 @@ This script comes without any warranty whatsoever. Do not use it in production. 
 
 * Apart from loading transactions into SnelStart, it has not been tested on any other tasks. It might or might not work for your use case.
 * Revolut does not export the counterparty IBAN for transactions that you *receive*. As such, the IBAN field in MT940 for credit transactions are usually empty.
+* The export files from Revolut are missing some key data fields when the transaction is still pending (status is not *COMPLETED*). Only export completed transactions.
 
 ## Usage
 
