@@ -33,7 +33,7 @@ def main():
         for transaction in transactions:
             writer.write_transaction(transaction)
 
-        print('Wrote {} transactions to file: {}.'.format(len(transaction), args.output_file))
+        print('Wrote {} transactions to file: {}.'.format(len(transactions), args.output_file))
 
 
 if __name__ == "__main__":
