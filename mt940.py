@@ -1,7 +1,7 @@
 from data import Transaction
 
 BANK_NAME = 'Revolut'
-BANK_BIC = 'REVOGB21'
+BANK_BIC = 'REVOLT21'
 
 DEFAULT_SEQUENCE_NO = 1
 
