@@ -1,7 +1,7 @@
 from data import Transaction
 
-BANK_NAME = 'Revolut'
-BANK_BIC = 'REVOLT21'
+BANK_NAME = 'Mbank'
+BANK_BIC = 'BREXPLPWMBK'
 
 DEFAULT_SEQUENCE_NO = 1
 
@@ -80,7 +80,7 @@ class Mt940Writer:
 
 
 
-CURRENCY = 'EUR'
+CURRENCY = 'PLN'
 
 # format identifier
 TAG_940 = '940'
