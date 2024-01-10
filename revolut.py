@@ -8,12 +8,25 @@ from datetime import datetime, timedelta
 from data import Transaction
 
 EXCPECT_HEADERS = [
-    'Date started (UTC)', 'Time started (UTC)', 'Date completed (UTC)',
-    'Time completed (UTC)', 'State', 'Type', 'Description', 'Reference',
-    'Payer', 'Card name', 'Card number', 'Orig currency', 'Orig amount',
-    'Payment currency', 'Amount', 'Fee', 'Balance', 'Account',
-    'Beneficiary account number', 'Beneficiary sort code or routing number',
-    'Beneficiary IBAN', 'Beneficiary BIC'
+    'Date started (UTC)', 
+    'Date completed (UTC)',
+    'ID', 
+    'Type',
+    'Description', 
+    'Reference',
+    'Payer', 
+    'Card number', 
+    'Orig currency', 
+    'Orig amount',
+    'Payment currency',
+    'Amount', 
+    'Fee', 
+    'Balance', 
+    'Account',
+    'Beneficiary account number',
+    'Beneficiary sort code or routing number',
+    'Beneficiary IBAN',
+    'Beneficiary BIC'
 ]
 
 NAME_REMOVE_PREFIXES = [
@@ -79,17 +92,17 @@ class RevolutCsvReader:
 
             return name_
 
-        def _parse_datetime(date_str, time_str):
-            return datetime.strptime(date_str + time_str, DATETIME_FORMAT)
+        
 
-
-        _0, _1, completed_date_str, completed_time_str, _4, _5, name, description, _8, _9, _10, \
-        _11, _12, _13, amount_str, fee_str, balance_str, _17, _18, _19, iban, _21 \
+        _0, completed_date_str, _2, _3, description, _5, _6, _7, \
+        _8, _9, _10, amount_str, fee_str, balance_str, _14, _15, _16, iban, _18 \
             = row
 
-        completed_datetime = _parse_datetime(completed_date_str, completed_time_str)
+        completed_datetime = datetime.strptime(completed_date_str, DATE_FORMAT)
         amount, fee, balance = \
             float(amount_str), float(fee_str), float(balance_str)
+
+        name = "" # Field not present in CSV. Re-add later once Revolut re-adds it in their next CSV format change.
 
         transaction_without_fee = Transaction(
             amount=amount,
