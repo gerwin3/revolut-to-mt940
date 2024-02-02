@@ -8,11 +8,11 @@ DEFAULT_SEQUENCE_NO = 1
 
 class Mt940Writer:
 
-    def __init__(self, filename, account_iban):
+    def __init__(self, filename, account_iban, month):
         self.file = open(filename, 'w')
         self.account_iban = account_iban
 
-        self._write_header()
+        self._write_header(month)
         self._written_starting_balance = False
         self._written_ending_balance = False
 
@@ -57,11 +57,11 @@ class Mt940Writer:
             self.file.close()
 
 
-    def _write_header(self):
+    def _write_header(self, month):
         self.file.write(
             Mt940.make_header(BANK_BIC))
         self.file.writelines([
-            Mt940.make_20(BANK_NAME),
+            Mt940.make_20(BANK_NAME, month),
             Mt940.make_25(self.account_iban, CURRENCY),
             Mt940.make_28(DEFAULT_SEQUENCE_NO)
         ])
@@ -89,7 +89,7 @@ TAG_940 = '940'
 FORMAT_HEADER = ':' + TAG_940 + ':\n'
 
 # transaction ref
-FORMAT_20 = ':20:{bank}\n'
+FORMAT_20 = ':20:' + TAG_940 + '{bank}-{month}\n'
 
 # account id
 FORMAT_25 = ':25:{iban} {currency}\n'
@@ -120,9 +120,10 @@ class Mt940:
             bic=bic)
 
     @staticmethod
-    def make_20(bank):
+    def make_20(bank, month):
         return FORMAT_20.format(
-            bank=bank)
+            bank=bank,
+            month=month)
 
     @staticmethod
     def make_25(iban, currency):
