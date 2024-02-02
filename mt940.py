@@ -86,10 +86,7 @@ CURRENCY = 'EUR'
 TAG_940 = '940'
 
 # header
-FORMAT_HEADER = \
-    '{bic}\n' + \
-    TAG_940 + '\n' + \
-    '{bic}\n'
+FORMAT_HEADER = ':' + TAG_940 + ':\n'
 
 # transaction ref
 FORMAT_20 = ':20:{bank}\n'
