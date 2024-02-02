@@ -104,7 +104,7 @@ FORMAT_60F = ':60F:{sign}{date}{currency}{amount}\n'
 FORMAT_62F = ':62F:{sign}{date}{currency}{amount}\n'
 
 # transaction
-FORMAT_61 = ':61:{date}{date2}{amount}{magic}\n'
+FORMAT_61 = ':61:{date}{amount}{magic}\n'
 
 # transaction 2
 FORMAT_86 = ':86:/IBAN/{iban}/NAME/{name}/REMI/{description}\n'
@@ -156,7 +156,6 @@ class Mt940:
     def make_61(datetime, amount):
         return FORMAT_61.format(
             date=Mt940.date(datetime),
-            date2=Mt940.date(datetime, with_year=False),
             amount=Mt940.amount(amount),
             magic=MAGIC)
 
