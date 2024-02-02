@@ -7,26 +7,13 @@ from datetime import datetime, timedelta
 
 from data import Transaction
 
-EXCPECT_HEADERS = [
-    'Date started (UTC)', 
+EXPECT_HEADERS = [
     'Date completed (UTC)',
-    'ID', 
-    'Type',
-    'Description', 
-    'Reference',
-    'Payer', 
-    'Card number', 
-    'Orig currency', 
-    'Orig amount',
-    'Payment currency',
-    'Amount', 
-    'Fee', 
-    'Balance', 
-    'Account',
-    'Beneficiary account number',
-    'Beneficiary sort code or routing number',
+    'Description',
+    'Amount',
+    'Fee',
+    'Balance',
     'Beneficiary IBAN',
-    'Beneficiary BIC'
 ]
 
 NAME_REMOVE_PREFIXES = [
@@ -53,7 +40,7 @@ class RevolutCsvReader:
         self.filename = filename
 
         self.file = open(self.filename, 'r')
-        self.reader = csv.reader(self.file)
+        self.reader = csv.DictReader(self.file)
 
         self._validate()
 
@@ -70,8 +57,8 @@ class RevolutCsvReader:
             header = header.strip()
             return header
 
-        headers = [_santize_header(h) for h in next(self.reader)]
-        if headers != EXCPECT_HEADERS:
+        headers = [_santize_header(h) for h in self.reader.fieldnames]
+        if any(header not in headers for header in EXPECT_HEADERS):
             raise ValueError('Headers do not match expected Revolut CSV format.')
 
 
@@ -92,11 +79,8 @@ class RevolutCsvReader:
 
             return name_
 
-        
-
-        _0, completed_date_str, _2, _3, description, _5, _6, _7, \
-        _8, _9, _10, amount_str, fee_str, balance_str, _14, _15, _16, iban, _18 \
-            = row
+        completed_date_str, description, amount_str, fee_str, balance_str, iban = \
+                [row[header] for header in EXPECT_HEADERS]
 
         completed_datetime = datetime.strptime(completed_date_str, DATE_FORMAT)
         amount, fee, balance = \
