@@ -2,6 +2,7 @@ import os
 import string
 import csv
 import math
+import re
 
 from datetime import datetime, timedelta
 
@@ -9,7 +10,9 @@ from data import Transaction
 
 EXPECT_HEADERS = [
     'Date completed (UTC)',
+    'Type',
     'Description',
+    'Reference',
     'Amount',
     'Fee',
     'Balance',
@@ -17,7 +20,7 @@ EXPECT_HEADERS = [
 ]
 
 NAME_REMOVE_PREFIXES = [
-    'Payment from ',
+    'Money added from ',
     'To '
 ]
 
@@ -72,14 +75,14 @@ class RevolutCsvReader:
 
     def _parse_transaction(self, row):
 
-        def _santize_name(name_):
+        def _sanitize_name(name_):
             for remove_prefix in NAME_REMOVE_PREFIXES:
                 if name_.startswith(remove_prefix):
                     name_ = name_[len(remove_prefix):]
 
             return name_
 
-        completed_date_str, description, amount_str, fee_str, balance_str, iban = \
+        completed_date_str, type_str, description, reference, amount_str, fee_str, balance_str, iban = \
                 [row[header] for header in EXPECT_HEADERS]
 
         completed_datetime = datetime.strptime(completed_date_str, DATE_FORMAT)
@@ -92,7 +95,10 @@ class RevolutCsvReader:
             amount=amount,
             name=_santize_name(name),
             iban=iban,
-            description=description,
+            description=re.sub("\s+", " " , (
+                ('Transfer to' if type_str == "TRANSFER" else 'Money added from') +
+                f' {iban} {_sanitize_name(description)}: {reference}'
+            ).strip()),
             datetime=completed_datetime,
             before_balance=balance - amount - fee,
             after_balance=balance - fee)
