@@ -63,7 +63,7 @@ class Mt940Writer:
         self.file.writelines([
             Mt940.make_20(BANK_NAME, month),
             Mt940.make_25(self.account_iban, CURRENCY),
-            Mt940.make_28(DEFAULT_SEQUENCE_NO)
+            Mt940.make_28c(DEFAULT_SEQUENCE_NO)
         ])
 
 
@@ -95,7 +95,7 @@ FORMAT_20 = ':20:' + TAG_940 + '{bank}-{month}\n'
 FORMAT_25 = ':25:{iban} {currency}\n'
 
 # sequence no
-FORMAT_28 = ':28:{seqno}\n'
+FORMAT_28C = ':28C:{seqno}\n'
 
 # opening balance
 FORMAT_60F = ':60F:{sign}{date}{currency}{amount}\n'
@@ -132,8 +132,8 @@ class Mt940:
             currency=currency)
 
     @staticmethod
-    def make_28(seqno):
-        return FORMAT_28.format(
+    def make_28c(seqno):
+        return FORMAT_28C.format(
             seqno=Mt940.pad_5(seqno))
 
     @staticmethod
