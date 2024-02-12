@@ -29,9 +29,9 @@ def main():
     args = parser.parse_args()
 
     reader = RevolutCsvReader(args.input_file)
+    transactions = reader.get_all_transactions()
 
-    with Mt940Writer(args.output_file, args.account_iban) as writer:
-        transactions = reader.get_all_transactions()
+    with Mt940Writer(args.output_file, args.account_iban, transactions[0].datetime.strftime('%Y-%m')) as writer:
         for transaction in transactions:
             writer.write_transaction(transaction)
 

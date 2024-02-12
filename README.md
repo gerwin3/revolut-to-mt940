@@ -8,7 +8,7 @@ This script comes without any warranty whatsoever. Do not use it in production. 
 ## Features
 
 * It is specifically built for getting Revolut transactions into SnelStart. 
-* Parses the Revolut CSV file and extracts: timestamp, counterparty name, transaction description, transaction amount, fee amount, balance after transaction, counterparty IBAN.
+* Parses the Revolut CSV file and extracts: timestamp, transaction type, transaction description, transaction reference, transaction amount, fee amount, balance after transaction, counterparty IBAN.
 * This information is converted into a valid MT940 file.
 * Revolut charges fees for transactions. These are included in the transaction (as Revolut sees it). This could cause problems when importing into bookkeeping software as the amounts do not match up. This script will not include fees in transactions but insert "fake" transactions for each deducted fee. You will see those transactions separately in your bookkeeping software but in Revolut they are included in the transaction.
 

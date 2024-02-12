@@ -8,11 +8,11 @@ DEFAULT_SEQUENCE_NO = 1
 
 class Mt940Writer:
 
-    def __init__(self, filename, account_iban):
+    def __init__(self, filename, account_iban, month):
         self.file = open(filename, 'w')
         self.account_iban = account_iban
 
-        self._write_header()
+        self._write_header(month)
         self._written_starting_balance = False
         self._written_ending_balance = False
 
@@ -57,13 +57,13 @@ class Mt940Writer:
             self.file.close()
 
 
-    def _write_header(self):
+    def _write_header(self, month):
         self.file.write(
             Mt940.make_header(BANK_BIC))
         self.file.writelines([
-            Mt940.make_20(BANK_NAME),
+            Mt940.make_20(BANK_NAME, month),
             Mt940.make_25(self.account_iban, CURRENCY),
-            Mt940.make_28(DEFAULT_SEQUENCE_NO)
+            Mt940.make_28c(DEFAULT_SEQUENCE_NO)
         ])
 
 
@@ -86,19 +86,16 @@ CURRENCY = 'EUR'
 TAG_940 = '940'
 
 # header
-FORMAT_HEADER = \
-    '{bic}\n' + \
-    TAG_940 + '\n' + \
-    '{bic}\n'
+FORMAT_HEADER = ':' + TAG_940 + ':\n'
 
 # transaction ref
-FORMAT_20 = ':20:{bank}\n'
+FORMAT_20 = ':20:' + TAG_940 + '{bank}-{month}\n'
 
 # account id
 FORMAT_25 = ':25:{iban} {currency}\n'
 
 # sequence no
-FORMAT_28 = ':28:{seqno}\n'
+FORMAT_28C = ':28C:{seqno}\n'
 
 # opening balance
 FORMAT_60F = ':60F:{sign}{date}{currency}{amount}\n'
@@ -107,7 +104,7 @@ FORMAT_60F = ':60F:{sign}{date}{currency}{amount}\n'
 FORMAT_62F = ':62F:{sign}{date}{currency}{amount}\n'
 
 # transaction
-FORMAT_61 = ':61:{date}{date2}{amount}{magic}\n'
+FORMAT_61 = ':61:{date}{amount}{magic}\n'
 
 # transaction 2
 FORMAT_86 = ':86:/IBAN/{iban}/NAME/{name}/REMI/{description}\n'
@@ -123,9 +120,10 @@ class Mt940:
             bic=bic)
 
     @staticmethod
-    def make_20(bank):
+    def make_20(bank, month):
         return FORMAT_20.format(
-            bank=bank)
+            bank=bank,
+            month=month)
 
     @staticmethod
     def make_25(iban, currency):
@@ -134,8 +132,8 @@ class Mt940:
             currency=currency)
 
     @staticmethod
-    def make_28(seqno):
-        return FORMAT_28.format(
+    def make_28c(seqno):
+        return FORMAT_28C.format(
             seqno=Mt940.pad_5(seqno))
 
     @staticmethod
@@ -158,7 +156,6 @@ class Mt940:
     def make_61(datetime, amount):
         return FORMAT_61.format(
             date=Mt940.date(datetime),
-            date2=Mt940.date(datetime, with_year=False),
             amount=Mt940.amount(amount),
             magic=MAGIC)
 
