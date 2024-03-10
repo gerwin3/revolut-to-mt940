@@ -54,13 +54,13 @@ class RevolutCsvReader:
 
 
     def _validate(self):
-        def _santize_header(header):
+        def _sanitize_header(header):
             header = ''.join([c for c in header
                               if c in string.printable])
             header = header.strip()
             return header
 
-        headers = [_santize_header(h) for h in self.reader.fieldnames]
+        headers = [_sanitize_header(h) for h in self.reader.fieldnames]
         if any(header not in headers for header in EXPECT_HEADERS):
             raise ValueError('Headers do not match expected Revolut CSV format.')
 
@@ -93,7 +93,7 @@ class RevolutCsvReader:
 
         transaction_without_fee = Transaction(
             amount=amount,
-            name=_santize_name(name),
+            name=_sanitize_name(name),
             iban=iban,
             description=re.sub("\s+", " " , (
                 ('Transfer to' if type_str == "TRANSFER" else 'Money added from') +
