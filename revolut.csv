@@ -1,0 +1,20 @@
+Date started (UTC);Date completed (UTC);ID;Type;Description;Reference;Payer;Card number;Orig currency;Orig amount;Payment currency;Amount;Fee;Balance;Account;Beneficiary account number;Beneficiary sort code or routing number;Beneficiary IBAN;Beneficiary BIC
+15/05/2024;15/05/2024;6644a128-66a4-a553-9e72-dd7d120e1f0a;TRANSFER;Aan Kamer van Koophandel;KVK nummer: 93488831;Mark Jager;;EUR;80.10;EUR;-80.10;0.00;10634.15;EUR Main;;;NL31DEUT0319810577;DEUTNL2AXXX
+15/05/2024;15/05/2024;6644a2c2-200d-ad33-8fa4-6d35c99f7dd6;TRANSFER;Aan Mark Jager;Loonstrook mei 2024;Mark Jager;;EUR;3776.68;EUR;-3776.68;0.00;10714.25;EUR Main;;;NL70INGB0008516136;INGBNL2AXXX
+15/05/2024;15/05/2024;6644a234-bee3-ad39-b368-956c88b47f9d;TOPUP;Geld toegevoegd van MJ Scaleup Consulting B.V.;202405-004;;;EUR;6655.00;EUR;6655.00;0.00;14490.93;EUR Main;;;;
+10/05/2024;10/05/2024;663dc3ad-4e37-acc6-b5f3-e025ee90151b;TRANSFER;Aan Jortt  Boekhouden met een Glimlach via Mollie;MJ Hunting B.V. factuur 202405-51005;;;EUR;27.23;EUR;-27.23;0.00;7835.93;EUR Main;;;;
+07/05/2024;08/05/2024;663a6e0a-ba2e-a6a8-9f96-f65ad3f2f093;TRANSFER;Aan Belastingdienst;8,66424E+14;Mark Jager;;EUR;1508.00;EUR;-1508.00;-0.20;7863.16;EUR Main;;;NL86INGB0002445588;INGBNL2AXXX
+07/05/2024;07/05/2024;663a6c5d-a2fb-afed-b964-d1643fa1e57e;TRANSFER;Aan Mark Jager;Terugbetalen initiele storting RC door Mark Jager;Mark Jager;;EUR;1000.00;EUR;-1000.00;-0.20;9371.36;EUR Main;;;NL70INGB0008516136;INGBNL2AXXX
+07/05/2024;07/05/2024;663a6bf5-a704-a6dc-a9e5-02a6dc509638;TRANSFER;Aan Mark Jager;Loonstrook april 2024;Mark Jager;;EUR;3523.80;EUR;-3523.80;-0.20;10371.56;EUR Main;;;NL70INGB0008516136;INGBNL2AXXX
+07/05/2024;07/05/2024;663a6b73-9b1f-a9ac-828c-781c6a0d905a;TOPUP;Geld toegevoegd van MJ Scaleup Consulting B.V.;202404-003;;;EUR;13310.00;EUR;13310.00;0.00;13895.56;EUR Main;;;;
+07/05/2024;07/05/2024;6639be35-6d0e-a24a-8f97-3a767f8ed2c9;TRANSFER;Aan Ns Groep Iz Ns Reizigers;Factuur: 430016164882;;;EUR;39.25;EUR;-39.25;0.00;585.56;EUR Main;;;;
+24/04/2024;24/04/2024;662888a3-6be3-a2d5-a3ae-b9a04b22d4b7;TRANSFER;Aan KPN - Mobiel;Factuur 17-04-2024, klantnummer 40106116506, kpn.com/mobielefactuur.;;;EUR;21.79;EUR;-21.79;0.00;624.81;EUR Main;;;;
+23/04/2024;23/04/2024;6627484e-11a2-a005-ad75-731f776cb7f9;TRANSFER;Aan Jortt  Boekhouden met een Glimlach via Mollie;MJ Hunting B.V. factuur 202404-48842;;;EUR;17.24;EUR;-17.24;0.00;646.60;EUR Main;;;;
+13/04/2024;15/04/2024;661a1a8d-c577-a504-a40c-c8b7eafd82df;TRANSFER;Aan NS Groep N.V.;R2081271804015613307 0030016474231674 NSFLEXR20_812718040#15613307;Mark Jager;;EUR;0.01;EUR;-0.01;0.00;663.84;EUR Main;;;NL14ABNA0576850675;ABNANL2AXXX
+12/04/2024;15/04/2024;661977be-acef-a4cf-9ede-97fe94f4c1ce;TRANSFER;Aan Jortt | Boekhouden met een Glimlach via Stichting Mollie Payments;M03115924MK2VOA0 1152193155668779 Akkoord met automatische incasso;Mark Jager;;EUR;0.01;EUR;-0.01;0.00;663.85;EUR Main;;;NL51DEUT0265262461;DEUTNL2AXXX
+12/04/2024;15/04/2024;661944dc-904d-a36e-9587-50317d1fd1eb;TRANSFER;Aan Bike2Business B.V. via PAY.nl;2418141048Xcf7d9 0370932026895193 Factuur 11174 B-92089 ;Mark Jager;;EUR;336.14;EUR;-336.14;0.00;663.86;EUR Main;;;NL35RABO0117713678;RABONL2UXXX
+12/04/2024;12/04/2024;6619448e-63b5-a991-b8c7-e23b2de491d4;TOPUP;Geld toegevoegd van Hr M Jager;RC storting E1000;;;EUR;1000.00;EUR;1000.00;0.00;1000.00;EUR Main;;;;
+11/04/2024;11/04/2024;66181d5d-710a-ac98-81dc-c648cfaf563a;TRANSFER;Aan MJ Scaleup Consulting BV;Volstorting aandelen (1 t/m 120);Mark Jager;;EUR;1.20;EUR;-1.20;0.00;0.00;EUR Main;;;NL66BUNQ2114308944;BUNQNL2AXXX
+09/04/2024;09/04/2024;66158d57-b421-af37-a09e-0dc2bddfa90f;TRANSFER;Aan Mark Jager;Terugstorting volstorten kapitaal;Mark Jager;;EUR;1.20;EUR;-1.20;0.00;1.20;EUR Main;;;NL70INGB0008516136;INGBNL2AXXX
+09/04/2024;09/04/2024;66158cab-c1af-a01e-87f7-8d3c6070a5bf;TOPUP;Geld toegevoegd van Hr M Jager;Volstorting aandelen 1 t/m 40, MJ Hunting BV;;;EUR;1.20;EUR;1.20;0.00;2.40;EUR Main;;;;
+09/04/2024;09/04/2024;66158be3-05a6-a6fc-b9c2-1dbb1414e8d1;TOPUP;Geld toegevoegd van Hr M Jager;Volstorting aandelen MJ Hunting BV;;;EUR;1.20;EUR;1.20;0.00;1.20;EUR Main;;;;
