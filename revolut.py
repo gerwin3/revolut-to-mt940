@@ -95,7 +95,7 @@ class RevolutCsvReader:
             amount=amount,
             name=_sanitize_name(name),
             iban=iban,
-            description=re.sub("\s+", " " , (
+            description=re.sub(r"\s+", " " , (
                 ('Transfer to' if type_str == "TRANSFER" else 'Money added from') +
                 f' {iban} {_sanitize_name(description)}: {reference}'
             ).strip()),
